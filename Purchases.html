@@ -1,0 +1,166 @@
+<html>
+<head>
+<script>
+
+function Order(CardName, CardNumber, Month, Year, CVC)
+{
+   this.CardName = CardName;
+   this.CardNumber = CardNumber;
+   this.CardMonth = CardMonth;
+   this.CardYear = CardYearYear;
+   this.CardCVC = CardCVC;
+}
+
+
+
+
+
+	  
+function ValidateForm()
+{
+   
+   var Name = document.forms["myForm"]["CardName"];
+   var Number = document.forms["myForm"]["CardNumber"];
+   var Month = document.forms["myForm"]["CardMonth"];
+   var Year = document.forms["myForm"]["CardYear"];
+   var CVC = document.forms["myForm"]["CardCVC"];
+   
+	var letters = /^[A-Za-z\s]+$/;  
+	if(Name.value.match(letters)) 
+		{  
+		  alert('Name on the card is accepted');  
+		  
+		
+			  var cardno = /^[0-9]{16}$/;  
+			  if(Number.value.match(cardno))  
+					{  
+				   alert('Number on the card is accepted'); 
+
+						var Cardmo = /^[01-12]{2}$/; 
+			            if(Month.value.match(Cardmo))  
+					        {  
+				           alert('Month on the card is accepted'); 
+								
+								var Cardyr = /^[19-99]{2}$/;
+								if(Year.value>=19)
+								{
+								alert('Year on the card is accepted');
+									
+									var CardCVC = /^[000-999]{3}$/;
+									if(CVC.value.match(CardCVC))
+                                    {
+									alert('CVC on the card is accepted');
+                                    }
+                                    else
+                                    {
+                                    alert("Not a valid CVC! 3 Numeric required");
+								    return false; 
+								    }									
+								}
+								else
+								{
+								alert("Not a valid year! 2 Numeric required");
+								return false; 
+								}
+								
+					        }  
+				            else  
+					        {  
+					        alert("Not a valid month! 2 Numeric required");  
+					        return false;  
+					        } 
+
+
+				  
+					}  
+				  else  
+					{  
+					alert("Not a valid credit card number! 16 Numeric required");  
+					return false;  
+					}  
+		            
+		}	    
+		else  
+		{  
+		alert('Please input alphabet characters only');  
+		return false;  
+		  
+                        
+		}  
+
+
+
+}
+
+</script>	
+<link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+
+<div class="divHeadTable"> 
+<ul>
+  <li><a href="index.html">Home</a></li>
+  <li><a href="designMe.html">Design Me</a></li>
+  <li><a href="readyToWear.html">Ready to Wear</a></li>
+  <li><a href="process.html">Our Processes</a></li>
+  <li><a href="Purchases.html">Purchases</a></li>
+  <img src ="companylogo.png" width = "2%">  
+</ul>
+</div>
+
+<form name = "myForm" action = "http://www.WebsiteDevelopmentBook.com/FormEcho.php" onsubmit = "return ValidateForm()" method = "post" >
+
+<div class="checkout">
+    <div class="card space icon-relative">
+	<label class="label">Name:</label></br>
+        <input type="text" name = "CardName" class="input" placeholder="Name on card">
+        <i class="fas fa-user"></i>
+      </div></br>
+    <div class="card_number" id="card-container">
+	<label class="label">Card Number:</label></br>
+        <input type="text" name="CardNumber" class="input" id="card" placeholder="0000 0000 0000 0000"> 
+        <div id="logo"></div>
+    </div>
+    <div class="card_grp">   
+      <div class="expiry_date">
+	  <label class="label">Month:</label></br>
+        <input type="text" name = "CardMonth" class="expiry_input" data-mask="00"  placeholder="00">
+		<label class="label">Year:</label></br>
+        <input type="text" name = "CardYear" class="expiry_input" data-mask="00" placeholder="00">
+      </div>
+      <div class="cvc">
+	  <label class="label">CVC:</label></br>
+        <input type="text" name = "CardCVC" class="cvc_input" data-mask="000" placeholder="000">
+        <div class="cvc_img">
+            ?
+           <div class="img">
+             <img src="https://i.imgur.com/2ameC0C.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn">
+      <input type="submit" value="PAY">
+    </div>
+</div>
+</form>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script src="card-validator.js"></script>
+
+
+<div class="divFootTable">  
+<table id ="footTable" style ="color: white">
+<col width = "333">
+<col width = "333">
+<col width = "333">
+<tr><td id="footerData">
+        CONTACT INFO</td>      <td>LOCATION</td><td>HOURS</td><td>FOLLOW US!</td></tr>
+<tr><td>718-253-6842</td>      <td><a href ="https://goo.gl/maps/W6zxnUNDDUxuVwsdA" target ="blank" style ="font-size: 15px; color: white">King's Plaza Shopping Center</a></td><td>Mondays - Sundays</td><td rowspan ="2"><a href ="https://www.facebook.com/" target ="_blank"><img src ="facebook.png" width ="8%">&nbsp; &nbsp;<a href ="https://www.instagram.com/" target ="_blank"><img src ="instagram.png" width ="8%">&nbsp; &nbsp;<a href ="https://twitter.com/" target ="_blank"><img src ="twitter.png" width ="8%"></td></tr>
+<tr><td><a href ="mailto:designMe@gmail?subject=Comments/Suggestions & body=My Comments:" style ="color: white">designMe@gmail.com</td><td>Brooklyn, NY 11201</td><td>8:00am - 8:00pm</td></tr>
+</div> 
+</div>
+
+</body>
+</html>

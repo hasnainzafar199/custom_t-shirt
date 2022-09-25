@@ -1,0 +1,193 @@
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" />
+<style type="text/css">
+
+.buttons {
+	font-size: 20px;
+	width: 6%;
+
+
+
+</style>
+</head>
+
+<body onload="init()">
+<ul>
+  <li><a href="index.html">Home</a></li>
+  <li><a href="designMe.html">Design Me</a></li>
+  <li><a href="readyToWear.html">Ready to Wear</a></li>
+  <li><a href="process.html">Our Processes</a></li>
+  <li><a href="Purchases.html">Purchases</a></li>
+  <img src ="companylogo.png" width = "2%">  
+</ul>
+
+</br></br></br>
+
+</br></br>
+<div class= "Start" width ="100%" align ="center">
+<h1>Design your own T-Shirt</h1>
+</br></br>
+<div style ="float: center">
+<button class ="buttons" style ="background-color: yellow" onclick="document.getElementById('Color').src='Shirts/YellowT.jpg'">Yellow</button>
+<button class ="buttons" style ="background-color: red" onclick="document.getElementById('Color').src='Shirts/RedT.jpg'">Red</button>
+<button class ="buttons" style ="background-color: blue" onclick="document.getElementById('Color').src='Shirts/BlueT.jpg'">Blue</button>
+<button class ="buttons" style ="background-color: orange" onclick="document.getElementById('Color').src='Shirts/OrangeT.jpg'">Orange</button>
+<button class ="buttons" style ="background-color: green" onclick="document.getElementById('Color').src='Shirts/GreenT.jpg'">Green</button>
+<button class ="buttons" style ="background-color: purple" onclick="document.getElementById('Color').src='Shirts/PurpleT.jpg'">Purple</button>
+<button class ="buttons" style ="background-color: white" onclick="document.getElementById('Color').src='Shirts/WhiteT.jpg'">White</button>
+
+</br></br>
+</div>
+<script>
+	function GetColor(Color)
+	{
+	this.Color=Color
+	}
+	 var Color=GetColor(Color);
+	 if (Color==Yellow)
+	 {
+	 url='Shirts/YellowT.jpg';
+	 }
+	 if (Color=="Red")
+	 {
+	 url='Shirts/RedT.jpg';
+	 }
+	 if (Color=="blue")
+	 {
+	 url=Shirts/BlueT.jpg;
+	 }
+	 if (Color=="Orange")
+	 {
+	 url=Shirts/OrangeT.jpg;
+	 }
+	 if (Color=="Green")
+	 {
+	 url=Shirts/GreenT.jpg;
+	 }
+	 if (Color=="Purple")
+	 {
+	 url=Shirts/PurpleT.jpg;
+	 }
+	 if (Color=="White")
+	 {
+	 url=Shirts/WhiteT.jpg;
+	 }
+	 if (Color=="Black")
+	 {
+	 url=Shirts/BlackT.jpg;
+	 }
+	 if (Color=="Grey")
+	 {
+	 url=Shirts/Grey.jpg;
+	 }
+	 
+	 
+	 var canvas, ctx, flag = false,
+        prevX = 0,
+        currX = 0,
+        prevY = 0,
+        currY = 0,
+        dot_flag = false;
+
+    var x = "black",
+        y = 2;
+    
+    function init() {
+        canvas = document.getElementById('can');
+        ctx = canvas.getContext("2d");
+        w = canvas.width;
+        h = canvas.height;
+    
+        canvas.addEventListener("mousemove", function (e) {
+            findxy('move', e)
+        }, false);
+        canvas.addEventListener("mousedown", function (e) {
+            findxy('down', e)
+        }, false);
+        canvas.addEventListener("mouseup", function (e) {
+            findxy('up', e)
+        }, false);
+        canvas.addEventListener("mouseout", function (e) {
+            findxy('out', e)
+        }, false);
+    }
+    
+    
+    function draw() {
+        ctx.beginPath();
+        ctx.moveTo(prevX, prevY);
+        ctx.lineTo(currX, currY);
+        ctx.strokeStyle = x;
+        ctx.lineWidth = y;
+        ctx.stroke();
+        ctx.closePath();
+    }
+    
+
+    
+    function findxy(res, e) {
+        if (res == 'down') {
+            prevX = currX;
+            prevY = currY;
+            currX = e.clientX - canvas.offsetLeft;
+            currY = e.clientY - canvas.offsetTop;
+    
+            flag = true;
+            dot_flag = true;
+            if (dot_flag) {
+                ctx.beginPath();
+                ctx.fillStyle = x;
+                ctx.fillRect(currX, currY, 2, 2);
+                ctx.closePath();
+                dot_flag = false;
+            }
+        }
+        if (res == 'up' || res == "out") {
+            flag = false;
+        }
+        if (res == 'move') {
+            if (flag) {
+                prevX = currX;
+                prevY = currY;
+                currX = e.clientX - canvas.offsetLeft;
+                currY = e.clientY - canvas.offsetTop;
+                draw();
+            }
+        }
+    }
+</script>
+<div class="outsideWrapper">
+<div class="insideWrapper">
+
+
+<canvas id="can" width="400" height="400"  style="border:2px solid"></canvas>
+        <img id="canvasimg" style="position:absolute;top:10%;left:52%;" style="display:none;">
+<img id="Color" "src="Shirts/WhiteT.jpg" style="width:400px;height:400px;z-index: -1;position:center">		
+
+    </div>
+</div>
+
+</div>
+
+<div class=End>
+</div>
+
+
+
+
+<div class="divFootTable">  
+<table id ="footTable" style ="color: white">
+<col width = "333">
+<col width = "333">
+<col width = "333">
+<tr><td id="footerData">
+        CONTACT INFO</td>      <td>LOCATION</td><td>HOURS</td><td>FOLLOW US!</td></tr>
+<tr><td>718-253-6842</td>      <td><a href ="https://goo.gl/maps/W6zxnUNDDUxuVwsdA" target ="blank" style ="font-size: 15px; color: white">King's Plaza Shopping Center</a></td><td>Mondays - Sundays</td><td rowspan ="2"><a href ="https://www.facebook.com/" target ="_blank"><img src ="facebook.png" width ="8%">&nbsp; &nbsp;<a href ="https://www.instagram.com/" target ="_blank"><img src ="instagram.png" width ="8%">&nbsp; &nbsp;<a href ="https://twitter.com/" target ="_blank"><img src ="twitter.png" width ="8%"></td></tr>
+<tr><td><a href ="mailto:designMe@gmail?subject=Comments/Suggestions & body=My Comments:" style ="color: white">designMe@gmail.com</td><td>Brooklyn, NY 11201</td><td>8:00am - 8:00pm</td></tr>
+</div> 
+</div>
+</body>
+
+</html>
